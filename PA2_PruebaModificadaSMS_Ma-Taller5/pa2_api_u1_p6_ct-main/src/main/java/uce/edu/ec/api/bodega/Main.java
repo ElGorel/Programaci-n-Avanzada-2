@@ -16,49 +16,25 @@ public class Main {
     public static class App implements QuarkusApplication {
 
         @Inject
-         private AmbitoAplicacion ambitoAplicacion;
-
+        private ProcesadorVentaService procesadorVentaService;
         @Inject
-        private ClaseIntermedia claseIntermedia;
+        private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
-        @Inject
-        private AmbitoRequest ambitoRequest;
-
-        @Inject
-        private AmbitoInject ambitoInject;
-
-        @Inject
-        private AmbitoSingleton ambitoSingleton;
 
         
         @Override
         public int run(String... args) {
 
-            System.out.println(this.ambitoAplicacion.incrementar());
-            System.out.println(this.ambitoAplicacion.incrementar());
-            System.out.println(this.ambitoAplicacion.incrementar());
-            
-            this.claseIntermedia.imprimirObjetoValor();
+            Venta v1 = new Venta("Marco Andrade",70);
+            this.procesadorVentaService.procesar(v1);
 
-            System.out.println("*************AMBITO REQUEST**************");
-            //System.out.println(this.ambitoRequest.incrementar());
-            //System.out.println(this.ambitoRequest.incrementar());
-            //System.out.println(this.ambitoRequest.incrementar());
+            Venta v2 = new Venta("Juanita Burbano",100);
+            this.procesadorVentaService.procesar(v2);
 
+            Venta v3 = new Venta("Julio Andrade",30);
+            this.procesadorVentaService.procesar(v3);
 
-            System.out.println("*************AMBITO DEPENDENT**************");
-            System.out.println(this.ambitoInject.incrementar());
-            System.out.println(this.ambitoInject.incrementar());
-            System.out.println(this.ambitoInject.incrementar());
-
-            this.claseIntermedia.imprimirObjetoValorInject();
-
-            System.out.println("*************AMBITO SINGLETON**************");
-            System.out.println(this.ambitoSingleton.incrementar());
-            System.out.println(this.ambitoSingleton.incrementar());
-            System.out.println(this.ambitoSingleton.incrementar());
-
-            this.claseIntermedia.imprimirObjetoValorSingleton();
+            this.estadisticasVentasGlobales.mostrarEstadisticasGlobales();
 
 
             return 0;
