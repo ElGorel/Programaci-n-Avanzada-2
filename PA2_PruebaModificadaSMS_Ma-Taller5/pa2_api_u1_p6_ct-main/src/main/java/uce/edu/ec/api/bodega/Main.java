@@ -16,27 +16,18 @@ public class Main {
     public static class App implements QuarkusApplication {
 
         @Inject
-        private ProcesadorVentaService procesadorVentaService;
-        @Inject
-        private EstadisticasVentasGlobales estadisticasVentasGlobales;
-
+        private ProcesadorVentaServiceTiempo procesadorVentaServiceTiempo;
+       @Inject
+       private InventarioService inventarioService;
 
         
         @Override
         public int run(String... args) {
 
             Venta v1 = new Venta("Marco Andrade",70);
-            this.procesadorVentaService.procesar(v1);
-
-            Venta v2 = new Venta("Juanita Burbano",100);
-            this.procesadorVentaService.procesar(v2);
-
-            Venta v3 = new Venta("Julio Andrade",30);
-            this.procesadorVentaService.procesar(v3);
-
-            this.estadisticasVentasGlobales.mostrarEstadisticasGlobales();
-
-
+            this.procesadorVentaServiceTiempo.procesar(v1);
+            this.procesadorVentaServiceTiempo.reprocesar(v1);
+            this.inventarioService.procesarInventario(v1);
             return 0;
         }
     }
