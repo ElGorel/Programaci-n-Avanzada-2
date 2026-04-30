@@ -6,12 +6,15 @@ import jakarta.interceptor.InvocationContext;
 
 @MedirTiempo
 @Interceptor
+//@Priority(2)
 public class MedirTiempoInterceptor {
 
     @AroundInvoke
     public Object medir(InvocationContext context) throws Exception {
 
         System.out.println("Se ejecuto antes del metodo"); 
+
+        System.out.println("Metodo interceptado "+ context.getMethod().getName());
            
         long inicio = System.currentTimeMillis();
         

@@ -26,8 +26,8 @@ public class Main {
 
             Venta v1 = new Venta("Marco Andrade",70);
             this.procesadorVentaServiceTiempo.procesar(v1);
-            this.procesadorVentaServiceTiempo.reprocesar(v1);
-            this.inventarioService.procesarInventario(v1);
+            //this.procesadorVentaServiceTiempo.reprocesar(v1);
+            //this.inventarioService.procesarInventario(v1);
             return 0;
         }
     }
